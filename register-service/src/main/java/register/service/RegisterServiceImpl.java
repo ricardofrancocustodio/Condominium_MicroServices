@@ -1,25 +1,38 @@
 package register.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import register.dto.ResidentDTO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
 
-    private List<ResidentDTO> residentDTOList =  new ArrayList<>();
+    private final List<ResidentDTO> residentDTOList =  new ArrayList<>();
     @Override
     public ResidentDTO createResident(ResidentDTO residentDTO) {
+        residentDTO.setId(residentDTO.getId());
+        residentDTO.setName(residentDTO.getName());
+        residentDTO.setCpf(residentDTO.getCpf());
+        residentDTO.setEmail(residentDTO.getEmail());
+
         residentDTOList.add(residentDTO);
 
         return residentDTO;
     }
 
     @Override
-    public ResidentDTO editResident(ResidentDTO residentDTO, Integer id) {
-        ResidentDTO residentDTOFound = findById(residentDTO.getId());
+    public ResidentDTO updateResident(Integer id, ResidentDTO residentDTO) {
+
+        ResidentDTO residentDTOFound = findById(id);
+
+        if (residentDTOFound == null) {
+            throw new IllegalArgumentException("Resident not found with id " + id);
+        }
+
         residentDTOFound.setName(residentDTO.getName());
         residentDTOFound.setCpf(residentDTO.getCpf());
         residentDTOFound.setEmail(residentDTO.getEmail());
@@ -29,10 +42,14 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public ResidentDTO findById(Integer id) {
-        return residentDTOList.stream()
-                .filter(residentDTO -> false)
-                .findFirst()
-                .get();
+        for (ResidentDTO residentDTO : residentDTOList) {
+            if (residentDTO.getId().equals(id)) {
+                return residentDTO;
+            }
+        }
+
+        return null; // ou lançar uma exceção
+
     }
 
     @Override

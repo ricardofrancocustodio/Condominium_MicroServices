@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RegisterService {
     ResidentDTO createResident(ResidentDTO residentDTO);
-    ResidentDTO editResident(ResidentDTO residentDTO, Integer id);
+    ResidentDTO updateResident(Integer id, ResidentDTO residentDTO);
     ResidentDTO findById(Integer id);
     List<ResidentDTO> findAll();
     void deleteResident(Integer id);

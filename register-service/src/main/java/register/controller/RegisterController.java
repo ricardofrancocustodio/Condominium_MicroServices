@@ -25,27 +25,23 @@ public class RegisterController {
         //tratamento de exceções
         //segurança
        return registerService.createResident(residentDTO);
-
     }
 
-
-    @PutMapping("edit/{name}")
-    public ResidentDTO update(@RequestBody ResidentDTO residentDTO, Integer id){
-        return registerService.editResident(residentDTO, id);
-
+    @PutMapping("edit/{id}")
+    public ResidentDTO update(@PathVariable Integer id,
+                              @RequestBody ResidentDTO residentDTO){
+        return registerService.updateResident(id, residentDTO);
     }
-
 
     @DeleteMapping("delete/{id}")
-    public void delete(@RequestBody ResidentDTO residentDTO){
-        registerService.deleteResident(residentDTO.getId());
+    public void delete(@PathVariable Integer id){
+        registerService.deleteResident(id);
     }
 
     @GetMapping("{id}")
     public ResidentDTO findById(@PathVariable Integer id){
             return registerService.findById(id);
     }
-
 
     @GetMapping("resident-list")
     public List<ResidentDTO> findAll(){

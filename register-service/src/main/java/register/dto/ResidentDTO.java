@@ -16,8 +16,6 @@ public class ResidentDTO {
     private String email;
     private String cpf;
 
-    private LocalDateTime creationDate;
-
     @Override
     public String toString() {
         return "ResidentDTO{" +
@@ -25,7 +23,6 @@ public class ResidentDTO {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", creation date='" + creationDate + '\'' +
                 '}';
     }
 
