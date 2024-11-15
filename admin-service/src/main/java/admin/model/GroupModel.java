@@ -45,7 +45,7 @@ public class GroupModel {
     private AdminModel owner;
 
     // Relacionamento com Members
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "groupModel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MemberModel> members;
 
     @PrePersist

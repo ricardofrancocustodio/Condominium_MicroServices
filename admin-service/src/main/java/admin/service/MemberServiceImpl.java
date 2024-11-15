@@ -23,14 +23,14 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<MemberDTO> getMembersByGroup(Long groupId) {
-        return memberRepository.findByGroupId(groupId).stream()
+        return memberRepository.findByGroupModel_Id(groupId).stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public MemberDTO getMemberById(Long groupId, Long memberId) {
-        MemberModel member = memberRepository.findByIdAndGroupId(memberId, groupId)
+        MemberModel member = memberRepository.findByIdAndGroupModel_Id(memberId, groupId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
         return convertToDTO(member);
     }
@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void removeMemberFromGroup(Long groupId, Long memberId) {
-        memberRepository.deleteByIdAndGroupId(memberId, groupId);
+        memberRepository.deleteByIdAndGroupModel_Id(memberId, groupId);
     }
 
     // Conversão de MemberModel para MemberDTO

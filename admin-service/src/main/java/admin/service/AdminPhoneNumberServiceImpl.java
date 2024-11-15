@@ -18,7 +18,7 @@ public class AdminPhoneNumberServiceImpl implements AdminPhoneNumberService {
 
     @Override
     public List<AdminPhoneNumberDTO> getPhoneNumbersByAdmin(Long adminId) {
-        return phoneNumberRepository.findByAdminId(adminId).stream()
+        return phoneNumberRepository.findByAdminModel_Id(adminId).stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }

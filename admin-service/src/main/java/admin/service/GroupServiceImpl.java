@@ -137,7 +137,7 @@ public class GroupServiceImpl implements GroupService {
         List<AdminPhoneNumberModel> phoneNumbers = adminDTO.getPhoneNumbers().stream()
                 .map(phoneNumber -> AdminPhoneNumberModel.builder()
                         .phoneNumber(phoneNumber)  // Usamos a String como o número de telefone
-                        .admin(admin)  // Relacionando ao admin criado
+                        .adminModel(admin)  // Relacionando ao admin criado
                         .build())
                 .collect(Collectors.toList());
 

@@ -12,11 +12,11 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<MemberModel, Long> {
 
     // Método personalizado para encontrar membros por grupo
-    List<MemberModel> findByGroupId(Long groupId);
+    List<MemberModel> findByGroupModel_Id(Long groupId);
 
     // Remover membro de um grupo específico
-    void deleteByIdAndGroupId(Long memberId, Long groupId);
+    void deleteByIdAndGroupModel_Id(Long memberId, Long groupId);
 
-    Optional<MemberModel> findByIdAndGroupId(Long memberId, Long groupId);
+    Optional<MemberModel> findByIdAndGroupModel_Id(Long memberId, Long groupId);
 }
 

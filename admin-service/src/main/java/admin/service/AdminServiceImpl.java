@@ -85,7 +85,7 @@ public class AdminServiceImpl implements AdminService {
         List<AdminPhoneNumberModel> phoneNumbers = adminDTO.getPhoneNumbers().stream()
                 .map(phone -> AdminPhoneNumberModel.builder()
                         .phoneNumber(phone)   // O número de telefone vem da String
-                        .admin(admin)         // Relacionando ao admin criado
+                        .adminModel(admin)         // Relacionando ao admin criado
                         .build())
                 .collect(Collectors.toList());
 

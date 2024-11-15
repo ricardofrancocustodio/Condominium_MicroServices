@@ -1,7 +1,5 @@
 package admin.model;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,9 +28,11 @@ public class AdminPhoneNumberModel {
     @JoinColumn(name = "admin_id", nullable = false)
     private AdminModel adminModel;
 
-    private AdminModel admin;
+   // private AdminModel admin;
 
     public void setAdminId(Long adminId) {
+        this.adminModel = new AdminModel();
+        this.adminModel.setId(adminId);  // Set o adminId manualmente
     }
 
 

@@ -11,5 +11,6 @@ import java.util.List;
 public interface AdminPhoneNumberRepository extends JpaRepository<AdminPhoneNumberModel, Long> {
 
     // Método personalizado para encontrar os números de telefone de um admin
-    List<AdminPhoneNumberModel> findByAdminId(Long adminId);
+   // List<AdminPhoneNumberModel> findByAdminId(Long adminId);
+    List<AdminPhoneNumberModel> findByAdminModel_Id(Long adminId);
 }

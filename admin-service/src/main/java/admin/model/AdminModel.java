@@ -37,7 +37,7 @@ public class AdminModel {
     private LocalDateTime updatedAt;
 
     // Relacionamento com AdminPhoneNumbers
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "adminModel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AdminPhoneNumberModel> phoneNumbers;
 
     @PrePersist
